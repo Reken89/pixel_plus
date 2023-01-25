@@ -12,10 +12,10 @@ $type = $_FILES['file_file']['type'];
 //Если файл действительно CSV, выполняем загрузку файла на сервер
 if ($type == 'text/csv'){ 
     //Загружаем файл на сервер (Для безопасности, выполняем загрузку не в корень проета!)
-    $goal = copy($_FILES['file_file']['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/pixel/csv/".basename($_FILES['file_file']['name']));
+    $goal = copy($_FILES['file_file']['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/pixel_plus/csv/".basename($_FILES['file_file']['name']));
 
     //Записываем в переменную file путь до csv файла
-    $file = $_SERVER['DOCUMENT_ROOT']."/pixel/csv/".$_FILES['file_file']['name'];
+    $file = $_SERVER['DOCUMENT_ROOT']."/pixel_plus/csv/".$_FILES['file_file']['name'];
         
     //Получаем из csv файла нужную информацию
     $info = new calculate();
