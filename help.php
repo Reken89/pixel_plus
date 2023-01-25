@@ -2,7 +2,7 @@
 
 class calculate 
 {   
-    public function read($file) 
+    public function read(string $file) 
     {
         $days = [];
         $value = [];

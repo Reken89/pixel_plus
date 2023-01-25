@@ -4,7 +4,7 @@ class view
 {
     public $table = "table.php";
     
-    public function render($table, $day, $week, $mounth)
+    public function render(string $table, array $day, array $week, array $mounth)
     {
         require_once $_SERVER['DOCUMENT_ROOT']."/pixel/$table";
     }
