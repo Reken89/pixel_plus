@@ -17,25 +17,25 @@ if ($type == 'text/csv'){
     //Записываем в переменную file путь до csv файла
     $file = $_SERVER['DOCUMENT_ROOT']."/pixel/csv/".$_FILES['file_file']['name'];
         
-//Получаем из csv файла нужную информацию
-$info = new calculate();
-$info = $info->read($file);
+    //Получаем из csv файла нужную информацию
+    $info = new calculate();
+    $info = $info->read($file);
 
-//Получаем список дней и среднее значение температуры для каждого дня
-$day = new day();
-$day = $day->day_aver($info);
+    //Получаем список дней и среднее значение температуры для каждого дня
+    $day = new day();
+    $day = $day->day_aver($info);
 
-//Получаем среднее значение температуры по неделям
-$week = new week();
-$week = $week->week_aver($day);
+    //Получаем среднее значение температуры по неделям
+    $week = new week();
+    $week = $week->week_aver($day);
 
-//Получаем среднее значение температуры по месяцам
-$mounth = new mounth();
-$mounth = $mounth->mounth_aver($day);
+    //Получаем среднее значение температуры по месяцам
+    $mounth = new mounth();
+    $mounth = $mounth->mounth_aver($day);
 
-//Подгружаем шаблон отрисовки таблички
-$view = new view();
-$view->view_table($day, $week, $mounth);
+    //Подгружаем шаблон отрисовки таблички
+    $view = new view();
+    $view->view_table($day, $week, $mounth);
        
 }else{
     echo "Формат файла отличается от CSV";    
