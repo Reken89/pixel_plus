@@ -6,19 +6,19 @@ class calculate
     {
         $days = [];
         $value = [];
-        $k = 0;
+        $key = 0;
         //Для чтения CSV файла использую функцию fgetcsv
         //fgetcsv — Читает строку из файла и производит разбор данных CSV
         if (($handle = fopen($file, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-                $k += 1;
+                $key += 1;
 
                 if ($data[0] !== "" && $data[0] !== NULL){
-                    $days[$k] = mb_strimwidth($data[0], 0, 10);
+                    $days[$key] = mb_strimwidth($data[0], 0, 10);
                 }
 
                 if ($data[0] !== "" && $data[0] !== NULL && $data[1] !== "" && $data[1] !== NULL){
-                    $value[$k] = [
+                    $value[$key] = [
                         'data'  => $data[0],
                         'value' => $data[1],
                     ];
@@ -28,14 +28,14 @@ class calculate
         }
 
         //Группируем массив по одинаковым значениям
-        $day = array_unique($days);
+        $days = array_unique($days);
         //Убираем лишнее значение
-        unset($day[1]);
+        unset($days[1]);
         //Сбрасываем ключи
-        $day = array_values($day);
+        $days = array_values($days);
 
         $info = [
-            'day' => $day,
+            'day' => $days,
             'value' => $value,
         ];
 
